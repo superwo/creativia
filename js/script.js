@@ -3,6 +3,26 @@
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 $(document).ready(function () {
+  function calcScroll() {
+    var div = document.createElement('div');
+    div.style.width = '50px';
+    div.style.height = '50px';
+    div.style.overflowY = 'scroll';
+    div.style.visibility = 'hidden';
+    document.body.appendChild(div);
+    var scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+    return scrollWidth;
+  }
+
+  var scroll = calcScroll();
+  document.body.style.overflow = 'hidden';
+  document.body.style.marginRight = "".concat(scroll, "px");
+  setTimeout(function () {
+    document.querySelector('body').classList.add('display');
+    document.body.style.overflow = '';
+    document.body.style.marginRight = '0px';
+  }, 4000);
   var w = $(window).outerWidth();
   var h = $(window).outerHeight();
   var ua = window.navigator.userAgent;
@@ -4642,26 +4662,27 @@ $(document).ready(function () {
     opacity: 0,
     scale: 5,
     duration: 1,
+    delay: 4,
     ease: 'power2.out'
   });
   gsap.from('.banner__subtitle', {
     opacity: 0,
     duration: 2,
-    delay: 1,
+    delay: 5,
     ease: 'power2.out'
   });
   gsap.from('.banner__btns .btn:first-child', {
     opacity: 0,
     x: -100,
     duration: 1,
-    delay: 2,
+    delay: 6,
     ease: 'power2.out'
   });
   gsap.from('.banner__btns .btn:last-child', {
     opacity: 0,
     x: 100,
     duration: 1,
-    delay: 2,
+    delay: 6,
     ease: 'power2.out'
   });
   gsap.registerPlugin(ScrollTrigger);
@@ -4671,7 +4692,7 @@ $(document).ready(function () {
       opacity: 0,
       x: 1000,
       duration: 1,
-      start: 'top bottom-=100',
+      // start: 'top bottom-=100',
       scrollTrigger: {
         trigger: '.about__composition-box'
       },
@@ -4681,7 +4702,7 @@ $(document).ready(function () {
       opacity: 0,
       x: -1000,
       duration: 1,
-      start: 'top bottom-=100',
+      // start: 'top bottom-=100',
       scrollTrigger: {
         trigger: '.about__accord'
       },
@@ -4689,9 +4710,9 @@ $(document).ready(function () {
     });
     gsap.from('.about__list-item', {
       opacity: 0,
-      duration: 2,
-      stagger: 0.5,
-      start: 'top bottom-=200',
+      duration: 3,
+      stagger: 0.3,
+      // start: 'top bottom-=200',
       scrollTrigger: {
         trigger: '.about__list-item'
       },
@@ -4701,7 +4722,7 @@ $(document).ready(function () {
       opacity: 0,
       duration: 1,
       scale: 5,
-      start: 'top bottom-=100',
+      // start: 'top bottom-=100',
       scrollTrigger: {
         trigger: '.portfolio'
       },
@@ -4711,7 +4732,7 @@ $(document).ready(function () {
       opacity: 0,
       duration: 1,
       scale: 5,
-      start: 'top bottom-=100',
+      // start: 'top bottom-=100',
       scrollTrigger: {
         trigger: '.features'
       },
@@ -4719,8 +4740,8 @@ $(document).ready(function () {
     });
     gsap.from('.features__img', {
       opacity: 0,
-      duration: 3,
-      start: 'top bottom-=400',
+      duration: 2,
+      // start: 'top bottom-=400',
       scrollTrigger: {
         trigger: '.features__img'
       },
@@ -4730,8 +4751,8 @@ $(document).ready(function () {
       opacity: 0,
       x: -300,
       // duration: 3,
-      start: 'top bottom-=100',
-      end: 'bottom bottom-=200',
+      // start: 'top bottom-=100',
+      // end: 'bottom bottom-=200',
       stagger: 0.1,
       scrollTrigger: {
         trigger: '.features__list',
@@ -4743,8 +4764,8 @@ $(document).ready(function () {
       opacity: 0,
       x: 300,
       // duration: 3,
-      start: 'top bottom-=100',
-      end: 'bottom bottom-=200',
+      // start: 'top bottom-=100',
+      // end: 'bottom bottom-=200',
       stagger: 0.1,
       scrollTrigger: {
         trigger: '.features__list',
@@ -4756,7 +4777,7 @@ $(document).ready(function () {
       opacity: 0,
       duration: 1,
       scale: 5,
-      start: 'top bottom-=100',
+      // start: 'top bottom-=100',
       scrollTrigger: {
         trigger: '.clients__header'
       },
@@ -4766,7 +4787,7 @@ $(document).ready(function () {
       opacity: 0,
       duration: 1,
       scale: 5,
-      start: 'top bottom-=100',
+      // start: 'top bottom-=100',
       scrollTrigger: {
         trigger: '.team'
       },
@@ -4776,7 +4797,7 @@ $(document).ready(function () {
       opacity: 0,
       duration: 2,
       stagger: 0.5,
-      start: 'top bottom-=200px',
+      // start: 'top bottom-=200px',
       scrollTrigger: {
         trigger: '.team__list'
       },
@@ -4786,7 +4807,7 @@ $(document).ready(function () {
       opacity: 0,
       duration: 1,
       scale: 5,
-      start: 'top bottom-=100',
+      // start: 'top bottom-=100',
       scrollTrigger: {
         trigger: '.skills'
       },
@@ -4796,7 +4817,7 @@ $(document).ready(function () {
       opacity: 0,
       duration: 2,
       stagger: 0.5,
-      start: 'top bottom-=200px',
+      // start: 'top bottom-=200px',
       scrollTrigger: {
         trigger: '.skills__row',
         onEnter: function onEnter() {
@@ -4809,7 +4830,7 @@ $(document).ready(function () {
       opacity: 0,
       duration: 1,
       scale: 5,
-      start: 'top bottom-=100',
+      // start: 'top bottom-=100',
       scrollTrigger: {
         trigger: '.services'
       },
@@ -4818,8 +4839,8 @@ $(document).ready(function () {
     gsap.from('.services__item', {
       opacity: 0,
       duration: 2,
-      stagger: 0.5,
-      start: 'top bottom-=200px',
+      stagger: 0.3,
+      // start: 'top bottom-=200px',
       scrollTrigger: {
         trigger: '.services__list'
       },
@@ -4829,7 +4850,7 @@ $(document).ready(function () {
       opacity: 0,
       duration: 1,
       scale: 5,
-      start: 'top bottom-=100',
+      // start: 'top bottom-=100',
       scrollTrigger: {
         trigger: '.plans'
       },
@@ -4839,7 +4860,7 @@ $(document).ready(function () {
       opacity: 0,
       duration: 1,
       scale: 5,
-      start: 'top bottom-=100',
+      // start: 'top bottom-=100',
       scrollTrigger: {
         trigger: '.blog'
       },
@@ -4849,7 +4870,7 @@ $(document).ready(function () {
       opacity: 0,
       duration: 1,
       scale: 5,
-      start: 'top bottom-=100',
+      // start: 'top bottom-=100',
       scrollTrigger: {
         trigger: '.contacts'
       },
